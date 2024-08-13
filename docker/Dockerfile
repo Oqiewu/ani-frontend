@@ -1,35 +1,18 @@
-# Stage 1: Сборка приложения
-FROM node:lts-alpine as build
+FROM node:alpine AS builder
 
-# Устанавливаем рабочую директорию внутри контейнера
-WORKDIR /usr/src/app
+ENV NODE_ENV production
 
-# Копируем зависимости package.json и package-lock.json
-COPY package*.json ./
+WORKDIR /app
 
-# Устанавливаем зависимости
+COPY ../package.json ./
 RUN npm install
 
-# Копируем все файлы приложения
 COPY . .
 
-# Собираем приложение для production с минификацией
 RUN npm run build
 
-# Stage 2: Запуск Nginx для раздачи статики
-FROM nginx:alpine
+FROM nginx
 
-# Удаляем стандартную конфигурацию Nginx
-RUN rm /etc/nginx/conf.d/default.conf
+COPY --from=builder /app/build /usr/share/nginx/html
 
-# Копируем собранные файлы из предыдущего stage в nginx
-COPY --from=build /usr/src/app/build /usr/share/nginx/html
-
-# Копируем конфигурационный файл nginx
-COPY docker/nginx.conf /etc/nginx/conf.d/default.conf
-
-# Указываем порт, который будет прослушивать Nginx
-EXPOSE 80
-
-# Запускаем Nginx в фоновом режиме при старте контейнера
-CMD ["nginx", "-g", "daemon off;"]
+COPY nginx.conf /etc/nginx/conf.d/default.conf

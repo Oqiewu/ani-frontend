@@ -1,11 +1,44 @@
-version: '3.8'
+version: "3.8"
 
+#development
 services:
-  frontend:
+  react-app:
     build:
-      context: . 
-      dockerfile: ./docker/Dockerfile
-    ports:
-      - "3000:80"
+      context: .
+      dockerfile: docker/Dockerfile.dev
     volumes:
-      - ./frontend:/usr/src/app
+      - .:/react-app
+      - /react-app/node_modules
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=development
+      - CHOKIDAR_USEPOLLING=true # create-ui-app <= 5.x
+      - WATCHPACK_POLLING=true # create-ui-app >= 5.x
+      - FAST_REFRESH=false
+      - WDS_SOCKET_PORT=3000 # The mapped port on your host machine
+      
+
+#production
+
+# services:
+#   react-app:
+#     build:
+#       context: .
+#       dockerfile: docker/Dockerfile
+#     environment:
+#       - NODE_ENV=production
+#     ports:
+#       - "80:80"
+#     depends_on:
+#       - nginx
+
+#   nginx:
+#     image: nginx:alpine
+#     ports:
+#       - "80:80"
+#     volumes:
+#       - ./nginx.conf:/etc/nginx/conf.d/default.conf
+#       - /app/build:/usr/share/nginx/html
+#     depends_on:
+#       - react-app

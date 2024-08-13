@@ -1,25 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import HomePage from './pages/HomePage';
+import AnimeListPage from './pages/AnimeListPage';
+import AnimeDetailPage from './pages/AnimeDetailPage';
+import WikiPage from './pages/WikiPage';
+import UserProfilePage from './pages/UserProfilePage';
+import LoginPage from './pages/LoginPage';
+import RegisterPage from './pages/RegisterPage';
+import Header from './components/Header';
+import Footer from './components/Footer';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    return (
+        <Router>
+            <Header />
+            <Routes>
+                <Route path="/" element={<HomePage />} />
+                <Route path="/anime" element={<AnimeListPage />} />
+                <Route path="/anime/:id" element={<AnimeDetailPage />} />
+                <Route path="/wiki" element={<WikiPage />} />
+                <Route path="/profile" element={<UserProfilePage />} />
+                <Route path="/login" element={<LoginPage />} />
+                <Route path="/register" element={<RegisterPage />} />
+            </Routes>
+            <Footer />
+        </Router>
+    );
 }
 
 export default App;
