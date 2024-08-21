@@ -1,70 +1,78 @@
-# Getting Started with Create React App
+# Ani Frontend
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<!-- Блок информации о репозитории в бейджах -->
+![Static Badge](https://img.shields.io/badge/Oqiewu-Ani-frontend)
+![GitHub top language](https://img.shields.io/github/languages/top/Oqiewu/ani-frontend)
 
-## Available Scripts
+## О проекте Ani
 
-In the project directory, you can run:
+**Ani** — персональный гид по миру аниме, предлагающий интерфейс для просмотра контента и доступ к энциклопедическим данным. Проект включает в себя frontend и backend, обеспечивающий обработку данных и взаимодействие с базой данных, необходимой для работы приложения.
 
-### `npm start`
+**Frontend** и **backend** части приложения разделены на два отдельных репозитория:
+- [ani-frontend](https://github.com/Oqiewu/ani-frontend) — клиентская часть (этот репозиторий).
+- [ani-backend](https://github.com/Oqiewu/ani-backend) — серверная часть.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## О клиентской части (Ani Frontend)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Ani Frontend отвечает за:
+- Отображение пользовательского интерфейса.
+- Взаимодействие с серверной частью (backend) через API.
 
-### `npm test`
+### Основные технологии
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- **React** — библиотека для создания пользовательских интерфейсов.
+- **TypeScript** — статическая типизация для JavaScript.
+- **Docker** — контейнеризация приложения.
 
-### `npm run build`
+### Установка и запуск
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+#### Запуск с Docker
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+1. Склонируйте репозиторий:
+   ```bash
+   git clone https://github.com/Oqiewu/ani-frontend.git
+   ```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+2. Перейдите в директорию проекта (здесь находится `docker-compose.yaml`):
+   ```bash
+   cd ani-frontend
+   ```
+3. Создайте и запустите контейнеры:
+   ```bash
+   docker-compose up -d
+   ```
+   Эта команда выполнит сборку Docker-образов и запустит все необходимые контейнеры в фоновом режиме.
 
-### `npm run eject`
+4. Проверьте работу приложения:
+   
+   Приложение будет доступно по адресу `http://localhost:3000`.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+#### Запуск без Docker
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+1. Склонируйте репозиторий:
+   ```bash
+   git clone https://github.com/Oqiewu/ani-frontend.git
+   ```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+2. Перейдите в директорию проекта (здесь находится `docker-compose.yaml`):
+   ```bash
+   cd ani-frontend
+   ```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+3. Установите зависимости:
+   ```bash
+   npm install
+   ```
 
-## Learn More
+4. Запустите приложение:
+   ```bash
+   npm start
+   ```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+5. Проверьте работу приложения:
+   
+   Приложение будет доступно по адресу `http://localhost:3000`.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Структура проекта
+- `src/` — исходный код приложения.
+- `public/` — статические файлы и шаблоны.
