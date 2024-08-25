@@ -2,20 +2,22 @@ import React, { useState, useEffect } from 'react';
 import AnimeList from '../components/AnimeList';
 import SearchBar from '../components/SearchBar';
 import { CircularProgress, Pagination } from '@mui/material';
-import { CenteredPaginationContainer, LoaderContainer } from '../styles/AnimeListPageStyles';
+import { CenteredPaginationContainer, LoaderContainer, SearchContainer } from '../styles/AnimeListPageStyles';
 import { fetchAnimeTitles } from '../services/animeService';
+import ScrollToTopButton from '../components/ScrollToTopButton'; // Импорт компонента
 
 const AnimeListPage = () => {
     const [animeTitles, setAnimeTitles] = useState([]);
     const [searchQuery, setSearchQuery] = useState('');
+    const [searchTerm, setSearchTerm] = useState('');
     const [page, setPage] = useState(1);
     const [totalPages, setTotalPages] = useState(0);
     const [loading, setLoading] = useState(false);
 
-    const loadAnimeTitles = async (pageNumber) => {
+    const loadAnimeTitles = async (pageNumber, searchTerm) => {
         setLoading(true);
         try {
-            const data = await fetchAnimeTitles(pageNumber);
+            const data = await fetchAnimeTitles(pageNumber, 20, searchTerm);
             setAnimeTitles(data.items);
             setTotalPages(data.totalPages);
         } catch (error) {
@@ -25,21 +27,28 @@ const AnimeListPage = () => {
     };
 
     useEffect(() => {
-        loadAnimeTitles(page);
-    }, [page]);
+        loadAnimeTitles(page, searchTerm);
+    }, [page, searchTerm]);
 
     const handlePageChange = (event, value) => {
         setPage(value);
         window.scrollTo({ top: 0, behavior: 'smooth' });
     };
 
-    const filteredAnimeTitles = animeTitles.filter(anime =>
-        anime.originalName.toLowerCase().includes(searchQuery.toLowerCase())
-    );
+    const handleSearch = () => {
+        setPage(1);
+        setSearchTerm(searchQuery);
+    };
 
     return (
         <div className="container mx-auto px-4">
-            <SearchBar searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
+            <SearchContainer>
+                <SearchBar 
+                    searchQuery={searchQuery} 
+                    setSearchQuery={setSearchQuery} 
+                    onSearch={handleSearch} 
+                />
+            </SearchContainer>
 
             <CenteredPaginationContainer>
                 <Pagination
@@ -58,7 +67,7 @@ const AnimeListPage = () => {
                 </LoaderContainer>
             ) : (
                 <>
-                    <AnimeList animeTitles={filteredAnimeTitles} />
+                    <AnimeList animeTitles={animeTitles} />
 
                     <CenteredPaginationContainer>
                         <Pagination
@@ -72,6 +81,8 @@ const AnimeListPage = () => {
                     </CenteredPaginationContainer>
                 </>
             )}
+
+            <ScrollToTopButton />
         </div>
     );
 };

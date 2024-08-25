@@ -12,3 +12,8 @@ export const LoaderContainer = styled.div`
     align-items: center;
     height: 200px;
 `;
+
+export const SearchContainer = styled.div`
+    margin-top: 24px;
+    margin-bottom: 16px;
+`;
