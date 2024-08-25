@@ -2,21 +2,8 @@ import React, { useState, useEffect } from 'react';
 import AnimeList from '../components/AnimeList';
 import SearchBar from '../components/SearchBar';
 import { CircularProgress, Pagination } from '@mui/material';
-import styled from '@emotion/styled';
+import { CenteredPaginationContainer, LoaderContainer } from '../styles/AnimeListPageStyles';
 import { fetchAnimeTitles } from '../services/animeService';
-
-const CenteredPaginationContainer = styled.div`
-    display: flex;
-    justify-content: center;
-    margin: 16px 0;
-`;
-
-const LoaderContainer = styled.div`
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 200px; /* Adjust height as needed */
-`;
 
 const AnimeListPage = () => {
     const [animeTitles, setAnimeTitles] = useState([]);
