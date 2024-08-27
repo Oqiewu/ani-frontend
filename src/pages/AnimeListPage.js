@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Helmet } from 'react-helmet';
 import AnimeList from '../components/AnimeList';
 import SearchBar from '../components/SearchBar';
 import { CircularProgress, Pagination } from '@mui/material';
@@ -40,8 +41,14 @@ const AnimeListPage = () => {
         setSearchTerm(searchQuery);
     };
 
+    const pageTitle = searchTerm ? `Поиск по запросу ${searchTerm}` : `Список аниме`;
+
     return (
         <div className="container mx-auto px-4">
+            <Helmet>
+                <title>{pageTitle}</title>
+            </Helmet>
+            
             <SearchContainer>
                 <SearchBar 
                     searchQuery={searchQuery} 

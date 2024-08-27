@@ -1,7 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { AppBar, Toolbar, Typography, Button, Container } from '@mui/material';
+import { AppBar, Toolbar, Container } from '@mui/material';
 import styled from '@emotion/styled';
+import logo from '../assets/img/logo_with_name_white.svg';
 
 const StyledAppBar = styled(AppBar)`
     background-color: #333;
@@ -9,7 +10,9 @@ const StyledAppBar = styled(AppBar)`
 
 const StyledToolbar = styled(Toolbar)`
     display: flex;
-    justify-content: space-between;
+    justify-content: space-between; /* Размещаем логотип и навигацию по краям */
+    align-items: center; /* Выравнивание по вертикали */
+    height: 100%; /* Занимает всю высоту AppBar */
 `;
 
 const StyledLink = styled(Link)`
@@ -22,24 +25,34 @@ const StyledLink = styled(Link)`
     }
 `;
 
-function Header() {
+const LogoContainer = styled.div`
+    display: flex;
+    align-items: center;
+`;
+
+const NavContainer = styled.div`
+    display: flex;
+    align-items: center;
+`;
+
+const Header = () => {
     return (
         <StyledAppBar position="static">
             <Container>
                 <StyledToolbar>
-                    <Typography variant="h6">
-                        Ani
-                    </Typography>
-                    <div>
+                    <LogoContainer>
+                        <img src={logo} alt="Logo" width={100} height={100} />
+                    </LogoContainer>
+                    <NavContainer>
                         <StyledLink to="/">Главная</StyledLink>
                         <StyledLink to="/anime">Аниме</StyledLink>
                         <StyledLink to="/wiki">Википедия</StyledLink>
                         <StyledLink to="/profile">Профиль</StyledLink>
-                    </div>
+                    </NavContainer>
                 </StyledToolbar>
             </Container>
         </StyledAppBar>
     );
-}
+};
 
 export default Header;
