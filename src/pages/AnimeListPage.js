@@ -4,7 +4,7 @@ import SearchBar from '../components/SearchBar';
 import { CircularProgress, Pagination } from '@mui/material';
 import { CenteredPaginationContainer, LoaderContainer, SearchContainer } from '../styles/AnimeListPageStyles';
 import { fetchAnimeTitles } from '../services/animeService';
-import ScrollToTopButton from '../components/ScrollToTopButton'; // Импорт компонента
+import ScrollToTopButton from '../components/ScrollToTopButton';
 
 const AnimeListPage = () => {
     const [animeTitles, setAnimeTitles] = useState([]);

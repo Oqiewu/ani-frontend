@@ -3,10 +3,10 @@ import { Container, Typography } from '@mui/material';
 import styled from '@emotion/styled';
 
 const FooterWrapper = styled('footer')`
-    margin-top: 40px;  /* Добавляем отступ сверху */
     padding: 20px;
     background-color: #f1f1f1;
     text-align: center;
+    margin-top: auto; 
 `;
 
 const Footer = () => {
