@@ -10,9 +10,9 @@ const StyledAppBar = styled(AppBar)`
 
 const StyledToolbar = styled(Toolbar)`
     display: flex;
-    justify-content: space-between; /* Размещаем логотип и навигацию по краям */
-    align-items: center; /* Выравнивание по вертикали */
-    height: 100%; /* Занимает всю высоту AppBar */
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
 `;
 
 const StyledLink = styled(Link)`
@@ -41,7 +41,7 @@ const Header = () => {
             <Container>
                 <StyledToolbar>
                     <LogoContainer>
-                        <img src={logo} alt="Logo" width={100} height={100} />
+                        <img src={logo} alt="Logo" width={90} height={90} />
                     </LogoContainer>
                     <NavContainer>
                         <StyledLink to="/">Главная</StyledLink>

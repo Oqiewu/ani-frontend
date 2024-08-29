@@ -11,7 +11,7 @@ const SearchBar = ({ searchQuery, setSearchQuery, onSearch }) => {
     };
 
     return (
-        <div style={{ display: 'flex', gap: '10px', marginBottom: '20px' }}>
+        <div style={{ display: 'flex', gap: '10px'}}>
             <TextField
                 fullWidth
                 label="Search"
