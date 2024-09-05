@@ -1,6 +1,6 @@
 import React from 'react';
 import { Grid, Typography } from '@mui/material';
-import { StyledCard, StyledCardMedia, StyledCardContent } from '../styles/AnimeListStyles';
+import { StyledCard, StyledCardMedia, StyledCardContent } from '../../styles/AnimeListStyles';
 
 const AnimeList = ({ animeTitles }) => {
     return (
